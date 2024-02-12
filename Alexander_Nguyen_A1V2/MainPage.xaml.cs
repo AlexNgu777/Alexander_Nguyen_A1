@@ -3,11 +3,18 @@
 public partial class MainPage : ContentPage
 {
 	int count = 0;
+    Game game = new Game();
+    
+    Word word = new Word(game.RandomWord(), "hello");
+
+    
 
 	public MainPage()
 	{
-		InitializeComponent();
-	}
+        game.FillList();
+        string answerWord = game.RandomWord();
+        
+    }
 
     void CheckButton_Clicked(System.Object sender, System.EventArgs e)
     {
@@ -19,6 +26,7 @@ public partial class MainPage : ContentPage
 
     void HintButton_Clicked(System.Object sender, System.EventArgs e)
     {
+        //game.ProvideHint();
     }
 
     void StatsButton_Clicked(System.Object sender, System.EventArgs e)
