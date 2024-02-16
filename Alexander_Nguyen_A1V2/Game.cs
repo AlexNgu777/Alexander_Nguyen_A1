@@ -5,6 +5,7 @@ namespace Alexander_Nguyen_A1V2
     {
 
         public string answerWord { get; set; }
+        public Word returnHintWord { get; set; }
         List<Word> WordList;
         private int gamesPlayed = 0;
         private int gamesWon = 0;
@@ -16,7 +17,8 @@ namespace Alexander_Nguyen_A1V2
             
             WordList = new List<Word>();
             FillList();
-            answerWord = RandomWord().Text;
+            returnHintWord = RandomWord();
+            answerWord = returnHintWord.Text;
         }
 
         public void FillList()
@@ -42,35 +44,29 @@ namespace Alexander_Nguyen_A1V2
                 return 100; //100 will be used as the value signifying the user guessed the word correct
             }
 
-            for (int i = 0; i < userGuess.Length; i++)
-            {
-                CheckWordIndex(userGuess[i], i);
-            }
             return 20; // code shouldnt get this far
 
         }
 
-        private int CheckWordIndex(char guessLetter, int indexLetter)
+        public int CheckWordIndex(char guessLetter, int indexLetter)
         {
             if (!answerWord.Contains(guessLetter)) //this is for checking if the word has the letter at all returns the index + 10
             {
-
                 streakCount = 0;
-                return indexLetter + 10;
-
+                return indexLetter + 10; //when returning index + 10 this will be for changing the background to red
             }
 
-            for (int i = 0; i < answerWord.Length; i++)
+            for (int i = 0; i < answerWord.Length; i++) //loop through answer word and check each letter
             {
-                if (guessLetter == answerWord[i] && answerWord.Contains(guessLetter)) //this will return the value of the specific index if the letter is the right spot
+                if (guessLetter == answerWord[i]) //this will return the value of the specific index if the letter is the right spot
                 {
-                    streakCount = 0; //reset streak count if user guessed;
-                    return i + 5; //if index is correct add 5 to it 
+                    //streakCount = 0; //reset streak count if user guessed;
+                    return i + 5; //GREEENN BACKGROUND
                 }
                 else if (answerWord.Contains(guessLetter)) //if the spot is wrong but the word does contain the letter return i
                 {
                     streakCount = 0; //reset streak after user hits check
-                    return i; //return the index of the right character in the wrong position
+                    return i; // ORANGEEEEEE BACKGROUND
                 }
             }
 
@@ -102,6 +98,7 @@ namespace Alexander_Nguyen_A1V2
             Random random = new Random();
             var number = random.Next(0,9);
             return WordList[number];
+            
         }
     }
 }
