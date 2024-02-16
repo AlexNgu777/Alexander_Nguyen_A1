@@ -3,18 +3,17 @@ namespace Alexander_Nguyen_A1V2
 {
     public class Game 
     {
-
-        public string answerWord { get; set; }
+        public string answerWord { get; set; } //change some of these to private, they dont all need to public
         public Word returnHintWord { get; set; }
         List<Word> WordList;
-        private int gamesPlayed = 0;
-        private int gamesWon = 0;
-        private int streakCount = 0;
+        public int gamesPlayed { get; set; }
+        public int gamesWon { get; set; }
+        public int streakCount { get; set; }
+        public int maxWinStreak { get; set; }
         
 
-        public Game() //ask prof about why when adding filllist it blows up the code
+        public Game() 
         {
-            
             WordList = new List<Word>();
             FillList();
             returnHintWord = RandomWord();
@@ -25,75 +24,82 @@ namespace Alexander_Nguyen_A1V2
         { //method for filling list, loops through array and fills in the list
 
             string[] _wordArray = { "Apple", "Hello", "Stair", "Sauce", "Candy", "Learn", "Magic", "Leave", "Alive", "Crown" };
-            string[] _hintArray = { "Hint 1", "Hint 2", "Hint 3", "Hint 4", "Hint 5", "Hint 6", "Hint 7", "Hint 8", "Hint 9", "Hint 10"};
+            string[] _hintArray = { "A _____ a Day Keeps the Doctor Sway", "A word for greeting someone", "A way to ascend", "Makes food taste better",
+                "Something to satisfy your sweet tooth", "I go to school to _____", "Harry Houdini",
+                "I will take my _____", "What a child is when they are just born", "Something only for the king"};
 
-            for (int i = 0; i < _wordArray.Length; i++)
+            for (int i = 0; i < _wordArray.Length; i++) //loop through the entire array
             {
-                WordList.Add(new Word(_wordArray[i], _hintArray[i]));
+                WordList.Add(new Word(_wordArray[i], _hintArray[i])); //create word object with text and hint and add to list
             }
         }
 
-        public int CheckUserGuess(string userGuess)
+        public int CheckUserGuess(string userGuess) //check whether or not the user guess is correct
         {
 
             if (userGuess.ToLower() == answerWord.ToLower()) // if the user guessed the right answer return the value 10, to signify the user has guessed the correct answer
             {
                 streakCount++; //since user won increase streakcount
+                maxWinStreak++;
                 gamesWon++; //since user won increase games won
-                gamesPlayed++;
                 return 100; //100 will be used as the value signifying the user guessed the word correct
             }
 
-            return 20; // code shouldnt get this far
+            return 20; 
 
         }
 
-        public int CheckWordIndex(char guessLetter, int indexLetter)
+        public int CheckWordIndex(char guessLetter, int indexLetter) //checks each letter in word and returns a value depending on the condition
         {
-            if (!answerWord.Contains(guessLetter)) //this is for checking if the word has the letter at all returns the index + 10
+            
+            if (guessLetter == answerWord[indexLetter]) //this will return the value of the specific index if the letter is the right spot
+            {
+                return indexLetter + 5; //GREEENN BACKGROUND
+            }
+            else if (answerWord.Contains(guessLetter)) //if the spot is wrong but the word does contain the letter return i
+            {
+                streakCount = 0; //reset streak after user hits check
+                return indexLetter; // ORANGEEEEEE BACKGROUND
+            } else if (!answerWord.Contains(guessLetter)) //this is for checking if the word has the letter at all returns the index + 10
             {
                 streakCount = 0;
-                return indexLetter + 10; //when returning index + 10 this will be for changing the background to red
+                return indexLetter + 10; //originally i thought you had to change the background to red if the letter was not in the answer word but i later found out that is not the case
             }
-
-                if (guessLetter == answerWord[indexLetter]) //this will return the value of the specific index if the letter is the right spot
-                {
-                    //streakCount = 0; //reset streak count if user guessed;
-                    return indexLetter + 5; //GREEENN BACKGROUND
-                }
-                else if (answerWord.Contains(guessLetter)) //if the spot is wrong but the word does contain the letter return i
-                {
-                    streakCount = 0; //reset streak after user hits check
-                    return indexLetter; // ORANGEEEEEE BACKGROUND
-                }
 
             return 1;
         }
 
-        public int returnGameStats()
+        public int getGameStats() //return games played
         {
             return gamesPlayed;
         }
 
-        public int returnGamesWon()
+        public double getWinPercentage() //return win percentage
         {
-            return gamesWon;
+            return ((double)gamesWon / (double)gamesPlayed) ;
         }
 
-        public int returnGamesStreak()
+        public int getWinStreak() //return win streak
         {
             return streakCount;
         }
 
-        public string ProvideHint(Word word)
+        public int getMaxWinStreak() //return max win streak
+        {
+            return maxWinStreak;
+        }
+
+        public string ProvideHint(Word word) //provide hint to user
         {
             return word.Hint.ToString();
         }
 
-        public Word RandomWord()
+        public Word RandomWord() //pick randomword and return the object
         {
             Random random = new Random();
             var number = random.Next(0,9);
+            answerWord = WordList[number].Text;
+            returnHintWord = WordList[number];
             return WordList[number];
             
         }

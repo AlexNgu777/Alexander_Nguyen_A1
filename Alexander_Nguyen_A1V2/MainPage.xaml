@@ -27,7 +27,7 @@
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"
                     FontSize="30"
-                    BackgroundColor="Gray"
+                    BackgroundColor="Black"
                     TextColor="White"
                     />
 
@@ -41,7 +41,7 @@
                     FontSize="30"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"
-                    BackgroundColor="Gray"
+                    BackgroundColor="Black"
                     TextColor="White"
 
                     />
@@ -58,7 +58,7 @@
                     FontSize="30"                    VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"
                     TextColor="White"
-                    BackgroundColor="Gray"
+                    BackgroundColor="Black"
                     />
 
                     </Border>
@@ -73,7 +73,7 @@
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"
                     TextColor="White"
-                    BackgroundColor="Gray"
+                    BackgroundColor="Black"
                     />
 
                     </Border>
@@ -87,7 +87,7 @@
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"
                     TextColor="White"
-                    BackgroundColor="Gray"
+                    BackgroundColor="Black"
                     />
                     </Border>
                 </HorizontalStackLayout>
@@ -120,7 +120,7 @@
                 Margin="10"
                 FontSize="20"
                 WidthRequest="100"
-                Text="Answer"
+                Text="Show Answer"
                 Clicked="AnswerButton_Clicked"
                 />
 
@@ -128,7 +128,7 @@
                 Margin="10"
                 FontSize="20"
                 WidthRequest="100"
-                Text="Hint"
+                Text="Show Hint"
                 Clicked="HintButton_Clicked"
                 />
 
@@ -136,7 +136,7 @@
                 Margin="10"
                 FontSize="20"
                 WidthRequest="100"
-                Text="Stats"
+                Text="Show Stats"
                 Clicked="StatsButton_Clicked"
                 />
 
