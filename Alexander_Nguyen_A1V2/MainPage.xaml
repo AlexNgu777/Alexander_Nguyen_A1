@@ -148,11 +148,16 @@
                 
              <Label
                     x:Name="Entry"
-                    Text="Alexander Nguyen"
+                    Text="Created By: Alexander Nguyen"
                     FontSize="30"
                     />
-                   
 
+                <Label
+                    x:Name="AnswerWordDisplay"
+                    Text="Answer word here"
+                    FontSize = "15"
+                    />
+                   
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

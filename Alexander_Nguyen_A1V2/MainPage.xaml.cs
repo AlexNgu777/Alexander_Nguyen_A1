@@ -8,8 +8,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
         InitializeComponent();
-        
-        
+
+        AnswerWordDisplay.Text = game.answerWord;
     }
 
     void CheckButton_Clicked(System.Object sender, System.EventArgs e)
