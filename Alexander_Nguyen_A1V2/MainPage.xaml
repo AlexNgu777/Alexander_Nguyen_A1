@@ -112,7 +112,7 @@
 
             </VerticalStackLayout>
             <HorizontalStackLayout
-                Margin="0,150"
+                Margin="0,75"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="EndAndExpand">
 
@@ -139,6 +139,19 @@
                 Text="Stats"
                 Clicked="StatsButton_Clicked"
                 />
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Padding="0,25"
+                HorizontalOptions="CenterAndExpand">
+                
+             <Label
+                    x:Name="Entry"
+                    Text="Alexander Nguyen"
+                    FontSize="30"
+                    />
+                   
 
             </HorizontalStackLayout>
         </VerticalStackLayout>
