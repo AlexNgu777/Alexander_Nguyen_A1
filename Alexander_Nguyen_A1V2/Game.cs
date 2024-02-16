@@ -39,7 +39,7 @@ namespace Alexander_Nguyen_A1V2
                 streakCount++; //since user won increase streakcount
                 gamesWon++; //since user won increase games won
                 gamesPlayed++;
-                return 10; //10 will be used as the value signifying the user guessed the word correct
+                return 100; //100 will be used as the value signifying the user guessed the word correct
             }
 
             for (int i = 0; i < userGuess.Length; i++)

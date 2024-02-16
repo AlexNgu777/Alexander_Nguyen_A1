@@ -10,10 +10,21 @@ public partial class MainPage : ContentPage
         InitializeComponent();
 
         AnswerWordDisplay.Text = game.answerWord;
+
+        
     }
 
     void CheckButton_Clicked(System.Object sender, System.EventArgs e)
     {
+        if(game.CheckUserGuess(WordEntry.Text) == 100)
+        {
+            LetterLabel1.BackgroundColor = Colors.Green;
+            LetterLabel2.BackgroundColor = Colors.Green;
+            LetterLabel3.BackgroundColor = Colors.Green;
+            LetterLabel4.BackgroundColor = Colors.Green;
+            LetterLabel5.BackgroundColor = Colors.Green;
+        }
+
         game.CheckUserGuess(WordEntry.Text);
         if (game.CheckUserGuess(WordEntry.Text) < 5)
         {
