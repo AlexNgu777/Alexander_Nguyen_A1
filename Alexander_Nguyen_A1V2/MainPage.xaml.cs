@@ -6,29 +6,26 @@ public partial class MainPage : ContentPage
 {
 	int count = 0;
     Game game = new Game();
-   
-	public MainPage()
+
+    public MainPage()
 	{
         InitializeComponent();
-
         AnswerWordDisplay.Text = game.answerWord;
 
-        //while(WordEntry.Text != null)
-        //{
-        //    char[] userInput = WordEntry.Text.ToCharArray(); //put user input into a char array and then put each letter in the display box
-        //    LetterLabel1.Text = Convert.ToString(userInput[0]);
-        //    LetterLabel2.Text = Convert.ToString(userInput[1]);
-        //    LetterLabel3.Text = Convert.ToString(userInput[2]);
-        //    LetterLabel4.Text = Convert.ToString(userInput[3]);
-        //    LetterLabel5.Text = Convert.ToString(userInput[4]);
-
-        //}
-        
     }
 
     void CheckButton_Clicked(System.Object sender, System.EventArgs e)
     {
-        if(game.CheckUserGuess(WordEntry.Text) == 100)
+
+        char[] userInput = WordEntry.Text.ToCharArray(); //put user input into a char array and then put each letter in the display box
+        LetterLabel1.Text = Convert.ToString(userInput[0]).ToUpper();
+        LetterLabel2.Text = Convert.ToString(userInput[1]).ToUpper();
+        LetterLabel3.Text = Convert.ToString(userInput[2]).ToUpper();
+        LetterLabel4.Text = Convert.ToString(userInput[3]).ToUpper();
+        LetterLabel5.Text = Convert.ToString(userInput[4]).ToUpper();
+
+
+        if (game.CheckUserGuess(WordEntry.Text) == 100)
         {
             LetterLabel1.BackgroundColor = Colors.Green;
             LetterLabel2.BackgroundColor = Colors.Green;
@@ -40,9 +37,6 @@ public partial class MainPage : ContentPage
 
         for (int i = 0; i < WordEntry.Text.Length; i++)
         {
-
-            if (game.CheckWordIndex(WordEntry.Text[i], i) < 5)
-            {
                 switch (game.CheckWordIndex(WordEntry.Text[i], i))
                 {
                     case 0:
@@ -60,41 +54,34 @@ public partial class MainPage : ContentPage
                     case 4:
                         LetterLabel5.BackgroundColor = Colors.Orange;
                         break;
-                    default:
-                        Console.WriteLine("hello");
-                        break;
-                }
-            }
-            else if (game.CheckWordIndex(WordEntry.Text[i], i) > 4)
-            {
-                switch (game.CheckWordIndex(WordEntry.Text[i], i))
-                {
                     case 5:
-                        LetterLabel1.BackgroundColor = Colors.Orange;
+                        LetterLabel1.BackgroundColor = Colors.Green;
                         break;
                     case 6:
-                        LetterLabel2.BackgroundColor = Colors.Orange;
+                        LetterLabel2.BackgroundColor = Colors.Green;
                         break;
                     case 7:
-                        LetterLabel3.BackgroundColor = Colors.Orange;
+                        LetterLabel3.BackgroundColor = Colors.Green;
                         break;
                     case 8:
-                        LetterLabel4.BackgroundColor = Colors.Orange;
+                        LetterLabel4.BackgroundColor = Colors.Green;
                         break;
                     case 9:
-                        LetterLabel5.BackgroundColor = Colors.Orange;
+                        LetterLabel5.BackgroundColor = Colors.Green;
                         break;
                     default:
                         Console.WriteLine("hello");
                         break;
                 }
-            }
+            
             
         }
     }
 
     void AnswerButton_Clicked(System.Object sender, System.EventArgs e)
     {
+        DisplayAlert("YOU LOSEEEE","The answer word is: " + game.answerWord, "Shit game");
+        
         
     }
 

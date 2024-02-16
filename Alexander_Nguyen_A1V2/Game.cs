@@ -56,19 +56,16 @@ namespace Alexander_Nguyen_A1V2
                 return indexLetter + 10; //when returning index + 10 this will be for changing the background to red
             }
 
-            for (int i = 0; i < answerWord.Length; i++) //loop through answer word and check each letter
-            {
-                if (guessLetter == answerWord[i]) //this will return the value of the specific index if the letter is the right spot
+                if (guessLetter == answerWord[indexLetter]) //this will return the value of the specific index if the letter is the right spot
                 {
                     //streakCount = 0; //reset streak count if user guessed;
-                    return i + 5; //GREEENN BACKGROUND
+                    return indexLetter + 5; //GREEENN BACKGROUND
                 }
                 else if (answerWord.Contains(guessLetter)) //if the spot is wrong but the word does contain the letter return i
                 {
                     streakCount = 0; //reset streak after user hits check
-                    return i; // ORANGEEEEEE BACKGROUND
+                    return indexLetter; // ORANGEEEEEE BACKGROUND
                 }
-            }
 
             return 1;
         }
