@@ -94,7 +94,7 @@
                 </HorizontalStackLayout>
                 <HorizontalStackLayout
                 Spacing="20"
-                    Margin="0,30"
+                    Margin="0,15"
                     HorizontalOptions="CenterAndExpand" >
                     <Entry
                 x:Name="WordEntry"
@@ -114,7 +114,7 @@
 
             </VerticalStackLayout>
             <HorizontalStackLayout
-                Margin="0,75"
+                Margin="0,30"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="EndAndExpand">
 
@@ -144,8 +144,13 @@
 
             </HorizontalStackLayout>
 
+            <Image
+                Source="wordle.png"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
             <HorizontalStackLayout
-                Padding="0,25"
+                Padding="0,5"
                 HorizontalOptions="CenterAndExpand">
                 
              <Label

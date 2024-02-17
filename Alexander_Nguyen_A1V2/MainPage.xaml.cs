@@ -24,7 +24,7 @@ public partial class MainPage : ContentPage
             || WordEntry.Text.Contains('3') || WordEntry.Text.Contains('4') || WordEntry.Text.Contains('5') || WordEntry.Text.Contains('7')
             || WordEntry.Text.Contains('8') || WordEntry.Text.Contains('9') || WordEntry.Text.Contains('0'))
         { //if entry is too long or too short let user known also check if for if the user puts numbers in the input
-            DisplayAlert("ALERT","Make sure your input is 5 letters","Okay");
+            DisplayAlert("ALERT","Make sure your input is 5 letters and NO numbers","Okay");
             throw new Exception();
         }
 
@@ -50,7 +50,12 @@ public partial class MainPage : ContentPage
             int tempWonGames = game.gamesWon;
             int tempStreak = game.streakCount;
             int tempMaxStreak = game.maxWinStreak;
+            string tempLastWord = game.answerWord;
             game = new Game(); //reset game if they guess the answerWord
+            while (game.answerWord == tempLastWord)
+            {
+                game = new Game();
+            }
             game.gamesPlayed = tempGamesPlayed; //override the values with stats of the previous instance of the game
             game.gamesWon = tempWonGames;
             game.streakCount = tempStreak;
@@ -118,16 +123,25 @@ public partial class MainPage : ContentPage
     void AnswerButton_Clicked(System.Object sender, System.EventArgs e) //when clicked display the answer and reset word to a new random word
     {
         DisplayAlert("YOU LOSEEEE","The answer word is: " + game.answerWord, "Bad game");
+        game.gamesPlayed++;
+        game.streakCount = 0;
+        int tempGamesPlayed = game.gamesPlayed;
         int tempGames = game.gamesWon;
         int tempStreak = game.streakCount;
         int tempMaxStreak = game.maxWinStreak;
+        string tempLastWord = game.answerWord;
         game = new Game(); //reset game if they guess the answerWord
-        LetterLabel1.BackgroundColor = Colors.Gray;
+        while (game.answerWord == tempLastWord) //if new word is same as last word, reroll
+        {
+            game = new Game();
+        }
+        LetterLabel1.BackgroundColor = Colors.Gray; //reset background colours 
         LetterLabel2.BackgroundColor = Colors.Gray;
         LetterLabel3.BackgroundColor = Colors.Gray;
         LetterLabel4.BackgroundColor = Colors.Gray;
         LetterLabel5.BackgroundColor = Colors.Gray;
         AnswerWordDisplay.Text = game.answerWord;
+        game.gamesPlayed = tempGamesPlayed;
         game.gamesWon = tempGames;
         game.streakCount = tempStreak;
         game.maxWinStreak = tempMaxStreak;

@@ -67,8 +67,10 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\puzzle.png" />
+	  <None Remove="Resources\Images\wordle.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\puzzle.png" />
+	  <BundleResource Include="Resources\Images\wordle.png" />
 	</ItemGroup>
 </Project>

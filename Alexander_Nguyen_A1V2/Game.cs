@@ -23,7 +23,7 @@ namespace Alexander_Nguyen_A1V2
             answerWord = returnHintWord.Text;
         }
 
-        public void FillList()
+        private void FillList()
         { //method for filling list, loops through array and fills in the list
 
             string[] _wordArray = { "Apple", "Hello", "Stair", "Sauce", "Candy", "Learn", "Magic", "Leave", "Alive", "Crown" };
@@ -66,14 +66,14 @@ namespace Alexander_Nguyen_A1V2
             return 90000000;
         }
 
-        public int getGameStats() //return games played
+        private int getGameStats() //return games played
         {
             return gamesPlayed;
         }
 
         public double getWinPercentage() //return win percentage
         {
-            return ((double)gamesWon / (double)gamesPlayed) ;
+            return ((double)gamesWon / (double)gamesPlayed);
         }
 
         public int getWinStreak() //return win streak
@@ -94,7 +94,7 @@ namespace Alexander_Nguyen_A1V2
         public Word RandomWord() //pick randomword and return the object
         {
             Random random = new Random();
-            var number = random.Next(0,9);
+            var number = random.Next(0,10);
             answerWord = WordList[number].Text;
             returnHintWord = WordList[number];
             return WordList[number];
