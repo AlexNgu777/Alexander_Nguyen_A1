@@ -36,6 +36,7 @@
                     StrokeShape="RoundRectangle 10,10,10,10"
                     WidthRequest="70"
                     HeightRequest="70">
+
                         <Label
                     x:Name="LetterLabel2"
                     FontSize="30"
@@ -103,6 +104,7 @@
                         Text=""
                 />
                     <Button
+                        
                 x:Name="CheckButton"
                 Text="Check Word"
                 FontSize="25"
@@ -119,7 +121,7 @@
                 <Button
                 Margin="10"
                 FontSize="20"
-                WidthRequest="100"
+                WidthRequest="175"
                 Text="Show Answer"
                 Clicked="AnswerButton_Clicked"
                 />
@@ -127,7 +129,7 @@
                 <Button
                 Margin="10"
                 FontSize="20"
-                WidthRequest="100"
+                WidthRequest="175"
                 Text="Show Hint"
                 Clicked="HintButton_Clicked"
                 />
@@ -135,7 +137,7 @@
                 <Button
                 Margin="10"
                 FontSize="20"
-                WidthRequest="100"
+                WidthRequest="175"
                 Text="Show Stats"
                 Clicked="StatsButton_Clicked"
                 />

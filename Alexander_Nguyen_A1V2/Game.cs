@@ -1,4 +1,7 @@
-﻿using System;
+﻿//*Alexander Nguyen
+//*Feb 17th, 2024
+//*Student ID: 991753208
+using System;
 namespace Alexander_Nguyen_A1V2
 {
     public class Game 
@@ -36,17 +39,12 @@ namespace Alexander_Nguyen_A1V2
 
         public int CheckUserGuess(string userGuess) //check whether or not the user guess is correct
         {
-
             if (userGuess.ToLower() == answerWord.ToLower()) // if the user guessed the right answer return the value 10, to signify the user has guessed the correct answer
             {
-                streakCount++; //since user won increase streakcount
-                maxWinStreak++;
-                gamesWon++; //since user won increase games won
                 return 100; //100 will be used as the value signifying the user guessed the word correct
             }
 
             return 20; 
-
         }
 
         public int CheckWordIndex(char guessLetter, int indexLetter) //checks each letter in word and returns a value depending on the condition
@@ -65,8 +63,7 @@ namespace Alexander_Nguyen_A1V2
                 streakCount = 0;
                 return indexLetter + 10; //originally i thought you had to change the background to red if the letter was not in the answer word but i later found out that is not the case
             }
-
-            return 1;
+            return 90000000;
         }
 
         public int getGameStats() //return games played
@@ -89,9 +86,9 @@ namespace Alexander_Nguyen_A1V2
             return maxWinStreak;
         }
 
-        public string ProvideHint(Word word) //provide hint to user
+        public string ProvideHint() //provide hint to user
         {
-            return word.Hint.ToString();
+            return returnHintWord.Hint;
         }
 
         public Word RandomWord() //pick randomword and return the object
@@ -101,7 +98,6 @@ namespace Alexander_Nguyen_A1V2
             answerWord = WordList[number].Text;
             returnHintWord = WordList[number];
             return WordList[number];
-            
         }
     }
 }
