@@ -61,7 +61,7 @@ namespace Alexander_Nguyen_A1V2
             } else if (!answerWord.Contains(guessLetter)) //this is for checking if the word has the letter at all returns the index + 10
             {
                 streakCount = 0;
-                return indexLetter + 10; //originally i thought you had to change the background to red if the letter was not in the answer word but i later found out that is not the case
+                return indexLetter + 10; //originally i thought you had to change the background to gray if the letter was not in the answer word but i later found out that is not the case
             }
             return 90000000;
         }

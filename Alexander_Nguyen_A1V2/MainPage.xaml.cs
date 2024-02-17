@@ -24,7 +24,7 @@ public partial class MainPage : ContentPage
             || WordEntry.Text.Contains('3') || WordEntry.Text.Contains('4') || WordEntry.Text.Contains('5') || WordEntry.Text.Contains('7')
             || WordEntry.Text.Contains('8') || WordEntry.Text.Contains('9') || WordEntry.Text.Contains('0'))
         { //if entry is too long or too short let user known also check if for if the user puts numbers in the input
-            DisplayAlert("ALERT","Make sure your input is 5 letters and NO numbers","Okay");
+            DisplayAlert("ALERT", "Error: Guessed word must be 5 letters long", "Okay");
             throw new Exception();
         }
 
@@ -38,6 +38,7 @@ public partial class MainPage : ContentPage
 
         if (game.CheckUserGuess(WordEntry.Text) == 100) //if userguess is correct the method returns 100 to signify guess is correct
         {
+            DisplayAlert(":DDDDDD", "Well done! You guessed the right word. You can start over with a new word","Yayyy");
             LetterLabel1.BackgroundColor = Colors.Green;
             LetterLabel2.BackgroundColor = Colors.Green;
             LetterLabel3.BackgroundColor = Colors.Green;
@@ -45,7 +46,10 @@ public partial class MainPage : ContentPage
             LetterLabel5.BackgroundColor = Colors.Green;
             game.gamesWon++; //increment gamesWon, streakCount, maxWinStreak counter
             game.streakCount++;
-            game.maxWinStreak++;
+            if(game.streakCount > game.maxWinStreak)
+            {
+                game.maxWinStreak = game.streakCount;
+            }
             int tempGamesPlayed = game.gamesPlayed; //save the users stats to temp variables before restting games
             int tempWonGames = game.gamesWon;
             int tempStreak = game.streakCount;
@@ -140,6 +144,11 @@ public partial class MainPage : ContentPage
         LetterLabel3.BackgroundColor = Colors.Gray;
         LetterLabel4.BackgroundColor = Colors.Gray;
         LetterLabel5.BackgroundColor = Colors.Gray;
+        LetterLabel1.Text = "";
+        LetterLabel2.Text = "";
+        LetterLabel3.Text = "";
+        LetterLabel4.Text = "";
+        LetterLabel5.Text = "";
         AnswerWordDisplay.Text = game.answerWord;
         game.gamesPlayed = tempGamesPlayed;
         game.gamesWon = tempGames;
